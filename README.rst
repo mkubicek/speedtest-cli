@@ -1,5 +1,7 @@
-Purpose of this fork is to output the speedtest result as the previous versions did
-YYYY-MM-DD, HH:MM, latencyMS, downloadMbitS, uploadMbitS
+Purpose of this fork is to output the speedtest result as the previous versions did:
+
+$python speedtest-py --legacy
+<YYYY-MM-DD>, <HH:MM>, <latency_ms>, <download_Mbits>, <upload_Mbits>
 
 speedtest-cli
 =============
@@ -26,35 +28,6 @@ speedtest-cli works with Python 2.4-3.5
         :target: https://pypi.python.org/pypi/speedtest-cli/
         :alt: Versions
 
-Installation
-------------
-
-pip / easy\_install
-~~~~~~~~~~~~~~~~~~~
-
-::
-
-    pip install speedtest-cli
-
-or
-
-::
-
-    easy_install speedtest-cli
-
-Github
-~~~~~~
-
-::
-
-    pip install git+https://github.com/sivel/speedtest-cli.git
-
-or
-
-::
-
-    git clone https://github.com/sivel/speedtest-cli.git
-    python speedtest-cli/setup.py install
 
 Just download (Like the way it used to be)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -94,6 +67,9 @@ Usage
       --share               Generate and provide a URL to the speedtest.net share
                             results image
       --simple              Suppress verbose output, only show basic information
+      --legacy              Suppress verbose output, only show basic information
+                            in legacy format (<YYYY-MM-DD>, <HH:MM>, <latency_ms>,
+                            <download_Mbits>, <upload_Mbits>)
       --csv                 Suppress verbose output, only show basic information
                             in CSV format. Speeds listed in bit/s and not affected
                             by --bytes
