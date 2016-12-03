@@ -28,6 +28,7 @@ import datetime
 import platform
 import threading
 import xml.parsers.expat
+import time
 
 try:
     import gzip
@@ -1182,6 +1183,10 @@ def parse_args():
     parser.add_argument('--simple', action='store_true', default=False,
                         help='Suppress verbose output, only show basic '
                              'information')
+    parser.add_argument('--legacy', action='store_true', default=False,
+                        help='Suppress verbose output, only show basic '
+                             'information same as previous versions of '
+                             'speedtest-cli did')
     parser.add_argument('--csv', action='store_true', default=False,
                         help='Suppress verbose output, only show basic '
                              'information in CSV format. Speeds listed in '
@@ -1294,7 +1299,7 @@ def shell():
     # Pre-cache the user agent string
     build_user_agent()
 
-    if args.simple or args.csv or args.json:
+    if args.simple or args.legacy or args.csv or args.json:
         quiet = True
     else:
         quiet = False
@@ -1386,6 +1391,13 @@ def shell():
                 args.units[0],
                 (results.upload / 1000.0 / 1000.0) / args.units[1],
                 args.units[0]))
+    if args.legacy:
+        print_('%s, %s, %0.3f, %0.3f, %0.3f' %
+               (time.strftime("%Y-%m-%d"),
+                time.strftime("%H:%M"),
+                results.ping,
+                (results.download / 1000.0 / 1000.0),
+                (results.upload / 1000.0 / 1000.0)))
     elif args.csv:
         print_(results.csv(delimiter=args.csv_delimiter))
     elif args.json:
