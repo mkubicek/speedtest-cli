@@ -1,3 +1,6 @@
+Purpose of this fork is to output the speedtest result as the previous versions did
+YYYY-MM-DD, HH:MM, latencyMS, downloadMbitS, uploadMbitS
+
 speedtest-cli
 =============
 
